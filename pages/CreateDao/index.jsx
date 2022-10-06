@@ -130,7 +130,7 @@ export default function CreateDao() {
         );
       }
 
-      // Creating Dao in Rust Smart contract
+      // Creating Dao in Smart contract
       await window.contract.create_dao(window.accountId, JSON.stringify(createdObject))
         .send({
           from:window.accountId,

@@ -29,9 +29,9 @@ contract CoinExERC721 is ERC721 {
     uint256 private _goal_ids;
     uint256 private _ideas_ids;
     uint256 private _ideas_vote_ids;
-    mapping(uint256 => dao_uri_struct) public _dao_uris;          //_dao_ids          => (Dao)    Dao Wallet + Dao URI   + Finished
-    mapping(uint256 => goal_uri_struct) private _goal_uris;       //_goal_ids         => (Goal)   Dao ID + Goal URI
-    mapping(uint256 => ideas_uri_struct) public _ideas_uris;      //_ideas_ids        => (Ideas)  Goal ID + Ideas URI
+    mapping(uint256 => dao_uri_struct) public _dao_uris;                        //_dao_ids          => (Dao)    Dao Wallet + Dao URI   + Finished
+    mapping(uint256 => goal_uri_struct) private _goal_uris;                     //_goal_ids         => (Goal)   Dao ID + Goal URI
+    mapping(uint256 => ideas_uri_struct) public _ideas_uris;                    //_ideas_ids        => (Ideas)  Goal ID + Ideas URI
     mapping(uint256 => goal_ideas_votes_struct) public all_goal_ideas_votes;    //_ideas_vote_ids   => (Vote)   Goal ID + Ideas ID + Wallet
 
     address public owner;
@@ -200,10 +200,10 @@ contract CoinExERC721 is ERC721 {
     function create_goal_ideas_vote(uint256 _goal_id, uint256 _ideas_id,string memory _wallet) public returns (uint256)
     {
         //Create votes into all_goal_ideas_votes
-        all_goal_ideas_votes[_ideas_ids] = goal_ideas_votes_struct(_goal_id, _ideas_id,_wallet);
-        _ideas_ids++;
+        all_goal_ideas_votes[_ideas_vote_ids] = goal_ideas_votes_struct(_goal_id, _ideas_id,_wallet);
+        _ideas_vote_ids++;
 
-        return _ideas_ids;
+        return _ideas_vote_ids;
     }
 
 

@@ -3,16 +3,12 @@ import LoginModal from "../../components/components/modals/LoginModal";
 
 import { Header } from "../../components/layout/Header";
 import Head from "next/head";
-import Card from "../../components/components/Card/Card";
 import styles from "./Login.module.css";
-import { Button } from "@heathmont/moon-core-tw";
+import Button  from "@heathmont/moon-core-tw/lib/button/Button";
+import GenericCheckRounded  from "@heathmont/moon-icons-tw/lib/icons/GenericCheckRounded";
+import GenericClose  from "@heathmont/moon-icons-tw/lib/icons/GenericClose";
 import isServer from "../../components/isServer";
-import {
-  GenericCheckRounded,
-  GenericClose,
-  GenericUser,
-} from "@heathmont/moon-icons-tw";
-import Link from "next/link";
+
 let redirecting = "";
 export default function Login() {
   const [ConnectStatus, setConnectStatus] = useState(true);

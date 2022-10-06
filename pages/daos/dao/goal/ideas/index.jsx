@@ -120,12 +120,13 @@ export default function GrantIdeas() {
         id = Number(id);
 
         const ideaURI = await window.contract.ideas_uri(Number(id)).call(); //Getting ideas uri
+        const object = JSON.parse(ideaURI); //Getting ideas uri
         Goalid = await window.contract.get_goal_id_from_ideas_uri(ideaURI).call();
-        console.log(ideaURI);
+   
 
-        const goalURI = JSON.parse(await window.contract.goal_uri(Goalid).call()); //Getting goal URI
+        const goalURI = JSON.parse(await window.contract.goal_uri(Number(Goalid)).call()); //Getting goal URI
         let isvoted = false;
-        const Allvotes = await window.contract.get_ideas_votes_from_goal(Goalid,Number(id) ).call(); //Getting all votes
+        const Allvotes = await window.contract.get_ideas_votes_from_goal(Number(Goalid),Number(id) ).call(); //Getting all votes
         for (let i = 0; i < Allvotes.length; i++) {
           const element = Allvotes[i];
           if (element === window.accountId) isvoted = true;
@@ -133,17 +134,17 @@ export default function GrantIdeas() {
 
         setIdeasURI({
           ideasId: id,
-          Title: ideaURI.properties.Title.description,
-          Description: ideaURI.properties.Description.description,
-          wallet: ideaURI.properties.wallet.description,
-          logo: ideaURI.properties.logo.description.url,
+          Title: object.properties.Title.description,
+          Description: object.properties.Description.description,
+          wallet: object.properties.wallet.description,
+          logo: object.properties.logo.description.url,
           End_Date: goalURI.properties.End_Date?.description,
           voted: Object.keys(Allvotes).length,
           isVoted: isvoted,
-          allfiles: ideaURI.properties.allFiles
+          allfiles: object.properties.allFiles
         })
 
-        setimageList(ideaURI.properties.allFiles);
+        setimageList(object.properties.allFiles);
 
         if (document.getElementById("Loading"))
           document.getElementById("Loading").style = "display:none";
@@ -190,7 +191,12 @@ export default function GrantIdeas() {
 
 
   async function VoteIdees() {
-    await window.nearcontract.create_goal_ideas_vote({ "goal_id": Number(Goalid), "ideas_id": Number(id), "wallet": window.accountId }, "60000000000000");
+    await window.contract.create_goal_ideas_vote(Number(Goalid),Number(id), window.accountId).send({
+      from:window.accountId,
+      gasPrice: 500000000000,
+      gas: 5_000_000,
+    });
+    window.location.reload();
   }
 
 
