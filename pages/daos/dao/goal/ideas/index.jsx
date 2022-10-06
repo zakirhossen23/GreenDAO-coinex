@@ -1,13 +1,9 @@
 import { Button } from "@heathmont/moon-core-tw";
-import { ControlsPlus, TimeClock } from "@heathmont/moon-icons-tw";
 import Head from "next/head";
 import { useEffect, useState } from "react";
 import NavLink from "next/link";
-import ChooseProjectModal from '../../../../../components/components/modals/ChooseProjectModal';
 import SlideShow from '../../../../../components/components/Slideshow';
-import { GenericLoyalty } from "@heathmont/moon-icons-tw";
 
-import Card from "../../../../../components/components/Card/Card";
 import isServer from "../../../../../components/isServer";
 import { Header } from "../../../../../components/layout/Header";
 import styles from "../../../daos.module.css";
@@ -17,7 +13,6 @@ let IdeasWaiting = false;
 export default function GrantIdeas() {
   //variables
   const [eventId, setIdeasId] = useState(-1);
-  const [list, setList] = useState([]);
   const [imageList, setimageList] = useState([]);
   const [IdeasURI, setIdeasURI] = useState({ ideasId: "", Title: "", Description: "", wallet: "", logo: "", End_Date: "", voted: 0, isVoted: true, allfiles: [] });
 

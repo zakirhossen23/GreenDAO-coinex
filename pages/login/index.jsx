@@ -1,6 +1,4 @@
 import React, { useState, useEffect } from "react";
-import LoginModal from "../../components/components/modals/LoginModal";
-
 import { Header } from "../../components/layout/Header";
 import Head from "next/head";
 import styles from "./Login.module.css";

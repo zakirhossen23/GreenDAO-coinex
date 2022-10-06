@@ -102,7 +102,7 @@ export function Nav(): JSX.Element {
             >
               <div className="wallet__wrapper gap-4 flex items-center">
                 <div className="wallet__info flex flex-col items-end">
-                  <a href={`/user/${accfull}`} className="text-primary">
+                  <a className="text-primary">
                     <div className="font-light text-goten">{acc}</div>
                   </a>
                   <div className="text-goten">{Balance}</div>
