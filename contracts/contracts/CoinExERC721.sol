@@ -220,6 +220,18 @@ contract CoinExERC721 is ERC721 {
         return _StoreInfo;
     }
 
+    function reset_all() public {
+      _dao_ids = 0;
+      _goal_ids = 0;
+      _ideas_ids = 0;
+      _ideas_vote_ids = 0;
+      for (uint256 i = 0; i < _dao_ids; i++)            delete _dao_uris[i];
+      for (uint256 i = 0; i < _goal_ids; i++)           delete _goal_uris[i];
+      for (uint256 i = 0; i < _ideas_ids; i++)          delete _ideas_uris[i];
+      for (uint256 i = 0; i < _ideas_vote_ids; i++)     delete all_goal_ideas_votes[i];    
+
+    }
+
 
 
     //Test

@@ -7,7 +7,11 @@ import UseFormInput from "../../components/components/UseFormInput";
 export default function ResetDataFORM() {
 
   async function resetData() {
-    await window.nearcontract.reset_all({}, "60000000000000");
+    await window.contract.reset_all().send({
+      from:window.accountId,
+      gasPrice: 500000000000,
+      gas: 5_000_000,
+    });
   }
 
   function ResetDataBTN() {
