@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { Header } from "../components/layout/Header";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 import section2Image from "/public/home/section-2-img.jpg";
 import section1Image from "/public/home/section-1-img.jpg";
 import logo from "/public/Logo.svg";

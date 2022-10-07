@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Header } from "../../components/layout/Header";
 import Head from "next/head";
-import styles from "./Login.module.css";
+import styles from "./Login.module.scss";
 import Button  from "@heathmont/moon-core-tw/lib/button/Button";
 import GenericCheckRounded  from "@heathmont/moon-icons-tw/lib/icons/GenericCheckRounded";
 import GenericClose  from "@heathmont/moon-icons-tw/lib/icons/GenericClose";
