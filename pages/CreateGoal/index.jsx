@@ -138,7 +138,7 @@ export default function CreateGoal() {
         },
         wallet: {
           type: "string",
-          description: window.accountId,
+          description: window.selectedAddress,
         },
         logo: {
           type: "string",
@@ -152,7 +152,7 @@ export default function CreateGoal() {
 
       // Creating Goal in Rust Smart contract
       await window.contract.create_goal(JSON.stringify(createdObject),Number(id)).send({
-        from:window.accountId,
+        from:window.selectedAddress,
         gasPrice: 500000000000,
         gas: 5_000_000,
       });

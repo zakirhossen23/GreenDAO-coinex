@@ -29,7 +29,6 @@ export function Nav(): JSX.Element {
       if (window.innerWidth > 500) {
         subbing = 20;
       }
-      window.accountId = window.ethereum.selectedAddress;
       setAccFull(window.ethereum.selectedAddress);
       setAcc(window.ethereum.selectedAddress.toString().substring(0, subbing) + "...");
 
