@@ -89,7 +89,7 @@ export default function GrantIdeas() {
       fetchContractData();
 
     }
-  }, [id]);
+  }, [id,window.ethereum.selectedAddress]);
   useEffect(() => {
     DesignSlide();
   });
@@ -110,7 +110,7 @@ export default function GrantIdeas() {
   async function fetchContractData() {
     try {
       if (window.contract && id && window.ethereum.selectedAddress) {
-        setAccountAddress(window.selectedAddress);
+        setAccountAddress(window.ethereum.selectedAddress);
         setIdeasId(id); //setting Ideas id
         id = Number(id);
 
@@ -124,7 +124,7 @@ export default function GrantIdeas() {
         const Allvotes = await window.contract.get_ideas_votes_from_goal(Number(Goalid),Number(id) ).call(); //Getting all votes
         for (let i = 0; i < Allvotes.length; i++) {
           const element = Allvotes[i];
-          if (element === window.selectedAddress) isvoted = true;
+          if (element === window.ethereum.selectedAddress) isvoted = true;
         }
 
         setIdeasURI({
@@ -186,8 +186,8 @@ export default function GrantIdeas() {
 
 
   async function VoteIdees() {
-    await window.contract.create_goal_ideas_vote(Number(Goalid),Number(id), window.selectedAddress).send({
-      from:window.selectedAddress,
+    await window.contract.create_goal_ideas_vote(Number(Goalid),Number(id), window.ethereum.selectedAddress).send({
+      from:window.ethereum.selectedAddress,
       gasPrice: 500000000000,
       gas: 5_000_000,
     });

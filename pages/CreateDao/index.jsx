@@ -109,7 +109,7 @@ export default function CreateDao() {
         },
         wallet: {
           type: 'string',
-          description: window.selectedAddress
+          description: window.ethereum.selectedAddress
         },
         typeimg: {
           type: 'string',
@@ -131,9 +131,9 @@ export default function CreateDao() {
       }
 
       // Creating Dao in Smart contract
-      await window.contract.create_dao(window.selectedAddress, JSON.stringify(createdObject))
+      await window.contract.create_dao(window.ethereum.selectedAddress, JSON.stringify(createdObject))
         .send({
-          from:window.selectedAddress,
+          from:window.ethereum.selectedAddress,
           gasPrice: 500000000000,
           gas: 5_000_000,
         });

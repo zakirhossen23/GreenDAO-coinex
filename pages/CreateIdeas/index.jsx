@@ -74,7 +74,7 @@ export default function CreateIdeas() {
         },  
         wallet: {
           type: "string",
-          description: window.selectedAddress,
+          description: window.ethereum.selectedAddress,
         },       
         logo: {
           type: "string",
@@ -88,7 +88,7 @@ export default function CreateIdeas() {
      
       // Creating Ideas in Rust Smart contract
       await window.contract.create_ideas(JSON.stringify(createdObject),Number(id)) .send({
-        from:window.selectedAddress,
+        from:window.ethereum.selectedAddress,
         gasPrice: 500000000000,
         gas: 5_000_000,
       });

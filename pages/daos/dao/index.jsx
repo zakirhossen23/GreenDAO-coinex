@@ -22,8 +22,8 @@ export default function DAO() {
   let id = ""; //id from url
 
   useEffect(() => {
-    fetchContractData();
-  }, [id]);
+      fetchContractData();
+  },[id]);
   setInterval(function () {
     calculateTimeLeft();
   }, 1000);
@@ -57,7 +57,7 @@ export default function DAO() {
   async function fetchContractData() {
     //Fetching data from Smart contract
     try {
-      if (window.contract && id && window.ethereum.selectedAddress) {
+      if (window.contract && id && window.ethereum.selectedAddress !== null) {
         setDaoID(Number(id));
 
         const daoURI = JSON.parse(await window.contract.dao_uri(Number(id)).call()); //Getting dao URI
@@ -149,7 +149,7 @@ export default function DAO() {
             <NavLink href="?q=This Month">
               <a className="DonationBarLink tab block px-3 py-2">This Month</a>
             </NavLink>
-            {(DaoURI.wallet.toLowerCase() === window.selectedAddress?.toLowerCase()) ? (<> <NavLink href={`/CreateGoal?[${daoId}]`}>
+            {(DaoURI.wallet.toLowerCase() === window.ethereum.selectedAddress?.toLowerCase()) ? (<> <NavLink href={`/CreateGoal?[${daoId}]`}>
               <Button style={{ width: '135px', position: 'absolute', right: '1rem' }} iconLeft>
                 <ControlsPlus className="text-moon-24" />
                 <div className="card BidcontainerCard">
