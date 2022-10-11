@@ -83,13 +83,13 @@ export default function GrantIdeas() {
       );
     }
   }
-
   useEffect(() => {
     if (!isServer()) {
-      fetchContractData();
-
+      if (id !== "")
+        fetchContractData();
     }
-  }, [id]);
+  });
+
   useEffect(() => {
     DesignSlide();
   });
@@ -117,11 +117,11 @@ export default function GrantIdeas() {
         const ideaURI = await window.contract.ideas_uri(Number(id)).call(); //Getting ideas uri
         const object = JSON.parse(ideaURI); //Getting ideas uri
         Goalid = await window.contract.get_goal_id_from_ideas_uri(ideaURI).call();
-   
+
 
         const goalURI = JSON.parse(await window.contract.goal_uri(Number(Goalid)).call()); //Getting goal URI
         let isvoted = false;
-        const Allvotes = await window.contract.get_ideas_votes_from_goal(Number(Goalid),Number(id) ).call(); //Getting all votes
+        const Allvotes = await window.contract.get_ideas_votes_from_goal(Number(Goalid), Number(id)).call(); //Getting all votes
         for (let i = 0; i < Allvotes.length; i++) {
           const element = Allvotes[i];
           if (element === window.ethereum.selectedAddress) isvoted = true;
@@ -186,8 +186,8 @@ export default function GrantIdeas() {
 
 
   async function VoteIdees() {
-    await window.contract.create_goal_ideas_vote(Number(Goalid),Number(id), window.ethereum.selectedAddress).send({
-      from:window.ethereum.selectedAddress,
+    await window.contract.create_goal_ideas_vote(Number(Goalid), Number(id), window.ethereum.selectedAddress).send({
+      from: window.ethereum.selectedAddress,
       gasPrice: 500000000000,
       gas: 5_000_000,
     });
@@ -227,10 +227,10 @@ export default function GrantIdeas() {
         <>
           <div className={`flex gap-8`}>
             {(imageList.length > 1) ? (<><SlideShow className={styles.slideshow} images={imageList} />
-            </>) : (<><div className="flex-1 rounded-xl overflow-hidden flex" style={{height: '500px'}}>
+            </>) : (<><div className="flex-1 rounded-xl overflow-hidden flex" style={{ height: '500px' }}>
               <img type={imageList[0]?.type} src={imageList[0]?.url} alt="" />
             </div></>)}
-  
+
 
           </div>
         </>

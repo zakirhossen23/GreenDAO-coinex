@@ -22,8 +22,9 @@ export default function DAO() {
   let id = ""; //id from url
 
   useEffect(() => {
+    if (id !== "")
       fetchContractData();
-  },[id]);
+  });
   setInterval(function () {
     calculateTimeLeft();
   }, 1000);

@@ -20,10 +20,11 @@ export default function Goal() {
   const regex = /\[(.*)\]/g;
   let m;
   let id = ""; //id from url
-
+  
   useEffect(() => {
-    fetchContractData();
-  }, [id]);
+    if (id !== "")
+      fetchContractData();
+  });
   setInterval(function () {
     calculateTimeLeft();
   }, 1000);
