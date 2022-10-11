@@ -233,7 +233,6 @@ contract CoinExERC721 is ERC721 {
     }
 
 
-
     //Test
     function dao() public returns (string[] memory) {
         create_dao("wallet #1", "DAO metadata #1");

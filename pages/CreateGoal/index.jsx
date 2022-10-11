@@ -161,7 +161,7 @@ export default function CreateGoal() {
       console.error(error);
       window.location.href = "/login?[/]"; //If found any error then it will let the user to login page
     }
-    window.location.href = `/daos/dao?[${Number(id)}]`; //After the success it will redirect the user to /daos/dao? page
+    window.location.href = `/daos`; //After the success it will redirect the user to /daos/dao? page
 
   }
 
