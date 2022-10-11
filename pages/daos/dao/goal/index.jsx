@@ -23,7 +23,7 @@ export default function Goal() {
 
   useEffect(() => {
     fetchContractData();
-  }, [id,window.ethereum.selectedAddress]);
+  }, [id]);
   setInterval(function () {
     calculateTimeLeft();
   }, 1000);

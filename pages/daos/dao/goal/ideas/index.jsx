@@ -89,7 +89,7 @@ export default function GrantIdeas() {
       fetchContractData();
 
     }
-  }, [id,window.ethereum.selectedAddress]);
+  }, [id]);
   useEffect(() => {
     DesignSlide();
   });
