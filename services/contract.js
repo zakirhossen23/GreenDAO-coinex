@@ -25,6 +25,6 @@ async function initContract() {
 }
 
 if (typeof window !== "undefined") {
-  window.nearInitPromise = initContract()  
+  window.InitPromise = initContract()  
 }
 // export default null;
