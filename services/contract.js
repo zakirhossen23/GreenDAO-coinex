@@ -6,7 +6,6 @@ import ERC721Singleton from './ERC721Singleton';
 // Initializing contract
 async function initContract() {
   try {
-    console.clear();
     const fetchData = async () => {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -24,7 +23,7 @@ async function initContract() {
  
 }
 
-if (typeof window !== "undefined") {
+if (typeof window.ethereum !== "undefined") {
   window.InitPromise = initContract()  
 }
 // export default null;
