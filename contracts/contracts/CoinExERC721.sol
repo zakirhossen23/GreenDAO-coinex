@@ -72,6 +72,7 @@ contract CoinExERC721 is ERC721 {
         return _StoreInfo;
     }
 
+
     function dao_uri(uint256 _dao_id) public view returns (string memory) {
         //Getting one dao URI
         return _dao_uris[_dao_id].dao_uri;

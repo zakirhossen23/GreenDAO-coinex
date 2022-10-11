@@ -13,7 +13,7 @@ import { Button } from "@heathmont/moon-core-tw";
 export default function DAO() {
   //Variables
   const [list, setList] = useState([]);
-  const [DaoURI, setDaoURI] = useState({ "Title": "", "Description": "", "Start_Date": "", "End_Date": "", "logo": "", "wallet": "", "typeimg": "", "allFiles": [] });
+  const [DaoURI, setDaoURI] = useState({ Title: "", Description: "", Start_Date: "", End_Date: "", logo: "", wallet: "", typeimg: "", allFiles: [] });
   const [daoId, setDaoID] = useState(-1);
 
 
