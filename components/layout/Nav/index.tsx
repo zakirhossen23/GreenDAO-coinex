@@ -46,8 +46,8 @@ export function Nav(): JSX.Element {
     }
   }
   useEffect(() => {
-    setInterval(fetchInfo, 3000);  
-  }, []);
+    fetchInfo();
+  });
 
 
   async function onClickDisConnect() {
