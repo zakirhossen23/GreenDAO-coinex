@@ -57,7 +57,7 @@ export default function DAO() {
   async function fetchContractData() {
     //Fetching data from Smart contract
     try {
-      if (window.contract && id) {
+      if (window.contract && id && window.ethereum.selectedAddress) {
         setDaoID(Number(id));
 
         const daoURI = JSON.parse(await window.contract.dao_uri(Number(id)).call()); //Getting dao URI

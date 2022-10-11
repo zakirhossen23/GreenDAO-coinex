@@ -57,7 +57,7 @@ export default function Goal() {
   async function fetchContractData() {
     //Fetching data from Smart contract
     try {
-      if (window.contract && id) {
+      if (window.contract && id && window.ethereum.selectedAddress) {
         setGoalID(Number(id));
 
         const goalURI = JSON.parse(await window.contract.goal_uri(Number(id)).call()); //Getting total goal (Number)

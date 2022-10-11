@@ -11,6 +11,7 @@ async function initContract() {
       try {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
+        window.accountId = window.ethereum.selectedAddress;
         window.contract = await ERC721Singleton(signer);
       } catch (error) {
         console.error(error);

@@ -109,7 +109,7 @@ export default function GrantIdeas() {
 
   async function fetchContractData() {
     try {
-      if (window.contract && id) {
+      if (window.contract && id && window.ethereum.selectedAddress) {
         setAccountAddress(window.selectedAddress);
         setIdeasId(id); //setting Ideas id
         id = Number(id);
