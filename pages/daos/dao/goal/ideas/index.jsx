@@ -124,7 +124,7 @@ export default function GrantIdeas() {
         const Allvotes = await window.contract.get_ideas_votes_from_goal(Number(Goalid),Number(id) ).call(); //Getting all votes
         for (let i = 0; i < Allvotes.length; i++) {
           const element = Allvotes[i];
-          if (element === window.selectedAddress) isvoted = true;
+          if (element === window.accountId) isvoted = true;
         }
 
         setIdeasURI({
