@@ -23,7 +23,8 @@ async function initContract() {
  
 }
 
-if (typeof window.ethereum !== "undefined") {
+if (typeof window !== "undefined") {
+  if (window?.ethereum !== "undefined")
   window.InitPromise = initContract()  
 }
 // export default null;
