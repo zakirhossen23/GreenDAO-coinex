@@ -84,8 +84,7 @@ export default function GrantIdeas() {
     }
   }
   useEffect(() => {
-    if (!isServer()) {
-      if (id !== "")
+    if (!isServer()) {    
         fetchContractData();
     }
   });
@@ -109,7 +108,7 @@ export default function GrantIdeas() {
 
   async function fetchContractData() {
     try {
-      if (window.contract && id && window.ethereum.selectedAddress) {
+      if (window.contract && id) {
         setAccountAddress(window.ethereum.selectedAddress);
         setIdeasId(id); //setting Ideas id
         id = Number(id);

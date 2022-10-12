@@ -20,10 +20,11 @@ export default function Goal() {
   const regex = /\[(.*)\]/g;
   let m;
   let id = ""; //id from url
-  
+
   useEffect(() => {
-    if (id !== "")
+    if (!isServer()) {
       fetchContractData();
+    }
   });
   setInterval(function () {
     calculateTimeLeft();
@@ -58,7 +59,7 @@ export default function Goal() {
   async function fetchContractData() {
     //Fetching data from Smart contract
     try {
-      if (window.contract && id && window.ethereum.selectedAddress) {
+      if (window.contract && id ) {
         setGoalID(Number(id));
 
         const goalURI = JSON.parse(await window.contract.goal_uri(Number(id)).call()); //Getting total goal (Number)

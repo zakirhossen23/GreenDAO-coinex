@@ -22,8 +22,9 @@ export default function DAO() {
   let id = ""; //id from url
 
   useEffect(() => {
-    if (id !== "")
-      fetchContractData();
+    if (!isServer()) {
+    fetchContractData();
+    }
   });
   setInterval(function () {
     calculateTimeLeft();
@@ -58,7 +59,7 @@ export default function DAO() {
   async function fetchContractData() {
     //Fetching data from Smart contract
     try {
-      if (window.contract && id && window.ethereum.selectedAddress !== null) {
+      if (window.contract && id) {
         setDaoID(Number(id));
 
         const daoURI = JSON.parse(await window.contract.dao_uri(Number(id)).call()); //Getting dao URI
